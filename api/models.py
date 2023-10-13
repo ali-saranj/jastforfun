@@ -27,5 +27,6 @@ class Salon(models.Model):
     location = models.CharField(max_length=500)
     phone = models.CharField(max_length=11)
 
-    def __str__(self):
-        return self.name
+
+def __str__(self):
+    return self.name
