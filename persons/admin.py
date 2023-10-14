@@ -6,4 +6,4 @@ from .models import Person
 
 @admin.register(Person)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ("name","phone",)
+    list_display = ("id","username","name","phone",)
