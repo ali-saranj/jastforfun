@@ -7,4 +7,4 @@ from .models import Salon
 
 @admin.register(Salon)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("id","name","phone","person",)
