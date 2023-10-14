@@ -20,7 +20,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('allPost/', views.allPost, name='allpost'),
-    path('getPost/<int:id>', views.getPost, name='getpost'),
-    path('getSalon/', views.getSalon, name="allSalon")
+    # path('allPost/', views.allPost, name='allpost'),
+    # path('getPost/<int:id>', views.getPost, name='getpost'),
+    # path('getSalon/', views.getSalon, name="allSalon")
 ]
