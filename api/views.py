@@ -29,6 +29,6 @@ def home(request):
         {
             "posts": posts,
             "categorys": categorys,
-            "salon": salons
+            "specialOffersSalon": salons
         }
     )
