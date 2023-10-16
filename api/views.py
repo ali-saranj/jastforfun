@@ -21,7 +21,7 @@ def home(request):
     if len(categorys) is 0:
         categorys = None
 
-    salons = SalonSerializer(Salon.objects.filter(pk__in=[1, 2, 3]), many=True).data
+    salons = SalonSerializer(Salon.objects.all().filter(isSpecial=True), many=True).data
     if len(salons) is 0:
         salons = None
 

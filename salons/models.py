@@ -13,6 +13,7 @@ class Salon(models.Model):
     location = models.CharField(max_length=500)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=11)
+    isSpecial = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
