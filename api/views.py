@@ -40,12 +40,12 @@ def search(requests):
     s = requests.query_params.get('s', None)
     categoryS = requests.query_params.get('category', None)
     salons = ""
-    if categoryS is not None:
+    if categoryS is not '':
         categoryS = categoryS.split(",")
         salons = Salon.objects.filter(Q(category__name__in=categoryS))
     else:
         salons = Salon.objects.all()
-    if s is not None:
+    if s is not '':
         salons = salons.filter(Q(name__icontains=s) | Q(description__icontains=s))
         return Response(SalonSerializer(salons, many=True).data)
     else:
