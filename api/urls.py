@@ -22,5 +22,6 @@ from . import views
 urlpatterns = [
     path('home/', views.home, name='home'),
     path('search', views.search, name='search'),
-    path("allcategorysearch/", views.allCategoryNameForSearch, name='allcategorysearch')
+    path("allcategorysearch/", views.allCategoryNameForSearch, name='allcategorysearch'),
+    path("getsalon/", views.getSalon, name='getsalon')
 ]

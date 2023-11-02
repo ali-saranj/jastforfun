@@ -7,10 +7,9 @@ from rest_framework.decorators import api_view
 from posts.models import Post
 from posts.serializers import PostSerializer
 from categorys.models import Category
-from categorys.serializers import CategorySerializer,CategorySearchSerializer
+from categorys.serializers import CategorySerializer, CategorySearchSerializer
 from salons.models import Salon
 from salons.serializers import SalonSerializer
-
 
 @api_view(["GET"])
 def home(request):
@@ -56,5 +55,14 @@ def search(requests):
 @api_view(["GET"])
 def allCategoryNameForSearch(requests):
     categoryNames = Category.objects.all()
-    return Response(CategorySearchSerializer(categoryNames,many=True).data)
+    return Response(CategorySearchSerializer(categoryNames, many=True).data)
+
+
+@api_view(["GET"])
+def getSalon(requests):
+    try:
+        id = requests.query_params.get("id", None)
+        return Response(SalonSerializer(Salon.objects.get(id=id),many=False).data)
+    except Exception as e:
+        return Response({"e"})
 
