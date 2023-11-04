@@ -71,6 +71,7 @@ def getSalon(requests):
 
 @api_view(['POST'])
 def regester(request):
+
     user = Person.objects.get(username = request.POST["username"])
     if user is not None:
         return Response({"statos": "is exits"})
@@ -82,3 +83,22 @@ def regester(request):
 
     else:
         return Response({"statos": "erorr"})
+
+
+
+@api_view(['POST'])
+def login(request):
+    try:
+        user = Person.objects.get(username = request.POST["username"])
+        if user.password == request.POST["password"]:
+            return Response({"statos": "ok"})
+
+        else:
+            return Response({"statos": "password in valid"})
+
+
+    except Exception:
+        return Response({"statos": "is not exits"})
+
+
+
