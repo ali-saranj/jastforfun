@@ -7,10 +7,13 @@ from salons.serializers import SalonSerializer
 
 class CategorySerializer(serializers.ModelSerializer):
     salon = SalonSerializer(read_only=True, many=True)
+
     class Meta:
         model = Category
         fields = '__all__'
 
 
-
-
+class CategorySearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
