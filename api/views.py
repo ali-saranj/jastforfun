@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+from persons.serializers import PersonSerializer
 from posts.models import Post
 from posts.serializers import PostSerializer
 from categorys.models import Category
@@ -12,6 +13,7 @@ from salons.models import Salon
 from salons.serializers import SalonSerializer
 
 from persons.models import Person
+
 
 @api_view(["GET"])
 def home(request):
@@ -64,7 +66,7 @@ def allCategoryNameForSearch(requests):
 def getSalon(requests):
     try:
         id = requests.query_params.get("id", None)
-        return Response(SalonSerializer(Salon.objects.get(id=id),many=False).data)
+        return Response(SalonSerializer(Salon.objects.get(id=id), many=False).data)
     except Exception as e:
         return Response({"e"})
 
@@ -72,25 +74,25 @@ def getSalon(requests):
 @api_view(['POST'])
 def regester(request):
 
-    user = Person.objects.get(username = request.POST["username"])
-    if user is not None:
+    print(request.data)
+    try:
+        user = Person.objects.get(username=request.data["username"])
         return Response({"statos": "is exits"})
-
-    users = PersonSerializer(data=request.POST)
-    if users.is_valid():
-        users.save()
-        return Response({"statos": "ok"})
-
-    else:
-        return Response({"statos": "erorr"})
+    except Exception:
+        users = PersonSerializer(data=request.data)
+        if users.is_valid():
+            users.save()
+            return Response({"statos": "ok"})
+        else:
+            return Response({"statos": "erorr"})
 
 
 
 @api_view(['POST'])
 def login(request):
     try:
-        user = Person.objects.get(username = request.POST["username"])
-        if user.password == request.POST["password"]:
+        user = Person.objects.get(username = request.data["username"])
+        if user.password == request.data["password"]:
             return Response({"statos": "ok"})
 
         else:
