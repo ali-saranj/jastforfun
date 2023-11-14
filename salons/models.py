@@ -11,7 +11,7 @@ class Salon(models.Model):
     description = models.CharField(max_length=500, blank=True)
     person = models.ManyToManyField(Person)
     location = models.CharField(max_length=500)
-    Latitude = models.CharField(max_length=100,blank=True)
+    latitude = models.CharField(max_length=100,blank=True)
     Longitude = models.CharField(max_length=100,blank=True)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=11)
