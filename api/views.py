@@ -73,7 +73,6 @@ def getSalon(requests):
 
 @api_view(['POST'])
 def regester(request):
-
     print(request.data)
     try:
         user = Person.objects.get(username=request.data["username"])
@@ -87,11 +86,10 @@ def regester(request):
             return Response({"statos": "erorr"})
 
 
-
 @api_view(['POST'])
 def login(request):
     try:
-        user = Person.objects.get(username = request.data["username"])
+        user = Person.objects.get(username=request.data["username"])
         if user.password == request.data["password"]:
             return Response({"statos": "ok"})
 
@@ -101,6 +99,3 @@ def login(request):
 
     except Exception:
         return Response({"statos": "is not exits"})
-
-
-
