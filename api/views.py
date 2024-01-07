@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
 from persons.serializers import PersonSerializer
 from posts.models import Post
 from posts.serializers import PostSerializer
@@ -11,7 +10,6 @@ from categorys.models import Category
 from categorys.serializers import CategorySerializer, CategorySearchSerializer
 from salons.models import Salon
 from salons.serializers import SalonSerializer
-
 from persons.models import Person
 
 
